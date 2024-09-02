@@ -1,3 +1,161 @@
 {
-  "extends": "next/core-web-vitals"
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/recommended",
+    "plugin:import/typescript",
+    "plugin:tailwindcss/recommended",
+    "plugin:prettier/recommended",
+    "plugin:@next/next/recommended",
+    "next/core-web-vitals"
+  ],
+  "plugins": ["perfectionist", "security", "@typescript-eslint"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2020,
+    "sourceType": "module",
+    "project": "./tsconfig.json"
+  },
+  "rules": {
+    "@typescript-eslint/explicit-module-boundary-types": "error",
+    "@typescript-eslint/no-explicit-any": "warn",
+    "import/no-anonymous-default-export": "warn",
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true,
+        "parser": "typescript"
+      }
+    ],
+    "no-unused-vars": "off",
+    "perfectionist/sort-objects": [
+      "error",
+      {
+        "order": "asc",
+        "type": "line-length"
+      }
+    ],
+
+    "perfectionist/sort-imports": [
+      "error",
+      {
+        "type": "line-length",
+        "order": "asc",
+        "groups": [
+          "next",
+          "react",
+          "related-react",
+          ["zustand", "dnd-kit", "builtin", "external"],
+          ["components"],
+          ["shared-components"],
+          ["hooks"],
+          ["shared-hooks"],
+          ["internal"],
+          ["shared"],
+          ["utils"],
+          ["type", "internal-type"],
+          ["parent-type", "sibling-type", "index-type"],
+          ["parent", "sibling", "index"],
+          "side-effect",
+          "style",
+          "object",
+          "unknown"
+        ],
+        "customGroups": {
+          "value": {
+            "react": ["react"],
+            "related-react": ["react-*"],
+            "zustand": ["zustand", "zustand/*"],
+            "dnd-kit": ["@dnd-kit/*"],
+            "prospace": ["@prospace/*"],
+            "hooks": "**/use-*",
+            "components": "**/*.tsx",
+            "shared-components": "**/shared/*.tsx",
+            "shared-hooks": "**/shared/use-*",
+            "utils": "**/utils/**"
+          },
+          "type": {
+            "react": ["react"]
+          }
+        },
+        "newlinesBetween": "always",
+        "internalPattern": ["@prospace/**"]
+      }
+    ],
+
+    "perfectionist/sort-interfaces": [
+      "error",
+      {
+        "type": "line-length",
+        "order": "asc"
+      }
+    ],
+
+    "perfectionist/sort-jsx-props": [
+      "error",
+      {
+        "type": "line-length",
+        "order": "asc"
+      }
+    ],
+
+    "perfectionist/sort-named-exports": [
+      "error",
+      {
+        "type": "line-length",
+        "order": "asc"
+      }
+    ],
+
+    "perfectionist/sort-named-imports": [
+      "error",
+      {
+        "type": "line-length",
+        "order": "asc"
+      }
+    ],
+
+    "perfectionist/sort-object-types": [
+      "error",
+      {
+        "type": "alphabetical",
+        "order": "asc"
+      }
+    ],
+
+    "perfectionist/sort-union-types": [
+      "error",
+      {
+        "type": "line-length",
+        "order": "asc"
+      }
+    ],
+
+    "import/no-unresolved": "error",
+
+    "import/no-cycle": "error",
+
+    "@typescript-eslint/consistent-type-imports": [
+      "error",
+      {
+        "fixStyle": "separate-type-imports"
+      }
+    ],
+
+    "@typescript-eslint/no-implied-eval": "error"
+  },
+  "settings": {
+    // ... 기존 settings 유지
+    "next": {
+      "rootDir": "."
+    }
+  }
 }
